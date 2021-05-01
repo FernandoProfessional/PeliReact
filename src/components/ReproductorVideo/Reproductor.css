@@ -1,0 +1,12 @@
+.peli{
+    background-color: red;
+    height: 400px;
+    width: 500px;
+    display: inline-block;
+}
+.repr{
+    display: inline;
+}
+.conten{
+    display:inline;
+}
