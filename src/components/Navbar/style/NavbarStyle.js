@@ -19,7 +19,7 @@ export const ContenedorTexto = styled.span`
 
   &:hover {
     margin-bottom: -2px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid white;
   }
   @media (max-width: 768px) {
     display: none;
@@ -85,10 +85,10 @@ export const ContenedorNavbar = styled.div`
   z-index: 10;
   transition-timing-function: ease-in;
   transition: all 0.7s;
-  background-color: red;
+  background-color: #141414;
   ${({ show }) =>
     show &&
     `
-    background-color: blue;
+    background-color: black;
   `}
 `;

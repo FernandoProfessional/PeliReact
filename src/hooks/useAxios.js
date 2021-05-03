@@ -30,9 +30,9 @@ export const useAxios = () => {
     // Peliculas de moda
 
     const peliculasModa = async() => {
-        const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4`)
-        console.log(response);
-        return response
+        const {data} = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4`)
+/*         console.log(response);
+ */        return data.results
     }
 
     // https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US
@@ -45,11 +45,10 @@ export const useAxios = () => {
     }
 
     const buscarTrailerPelicula = async(idFilm) => {
-            let {data}  = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)    
-            // https://www.youtube.com/watch?v=SUXWAEX2jlg
-            // valor = response.data.results.map(ele => ele.key)
-            return  data.results[0]    
-       
+        let {data}  = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)    
+        // https://www.youtube.com/watch?v=SUXWAEX2jlg
+        // valor = response.data.results.map(ele => ele.key)
+        return  data.results[0]    
     }
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
+import { Footer } from '../components/Footer/Footer'
 import { Navbar } from '../components/Navbar/Navbar'
 import { BusquedaScreen } from '../views/BusquedaScreen'
 import { HomeScreen } from '../views/HomeScreen'
@@ -18,6 +19,7 @@ export const RouterContent = () => {
                 <Route exact path="/buscar" component={BusquedaScreen}/>
                 <Redirect to="/home"/>
             </Switch>
+            <Footer/>
         </div>
     )
 }
