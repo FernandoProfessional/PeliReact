@@ -14,7 +14,7 @@ export const RouterApp = () => {
             <div className="algo">
             <Switch>
                 {/* Ruta de Inicio con el registro y login */}
-                <Route path="/index" component={IndexScreen}/>
+                <Route exact path="/index" component={IndexScreen}/>
                 {/* Rutas del contenido */}
                 <Route path="/" component={RouterContent}/>
             </Switch>

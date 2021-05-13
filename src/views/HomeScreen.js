@@ -6,7 +6,7 @@ import { Slider } from "../components/Slider/Slider";
 const Contenedor = styled.div`
   background-color: #141414;
   padding: 30px 90px 0 90px;
-
+  margin-top:72px;
   @media (max-width: 768px) {
     padding: 10px 30px 0 30px;
   }

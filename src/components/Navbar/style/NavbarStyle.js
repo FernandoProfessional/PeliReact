@@ -46,11 +46,22 @@ export const ContenedorPerfilTexto = styled.span`
   }
 `;
 export const ContenedorPerfilImagen = styled.div`
-  height: 40px;
-  width: 40px;
-  background-color: green;
+  height: inherit;
+  width: 60px;
   margin-left: 20px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 `;
+
+export const BotonLogOut = styled.button`
+  background-color: #141414;
+  border:none;
+  outline:none;
+  color: white;
+  font-size:17px;
+  cursor:pointer;
+`
 
 export const ContenedorImg = styled.div`
   background-color: inherit;

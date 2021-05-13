@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-export const MovieScreen = () => {
+export const FilmSelected = () => {
     return (
         <div>
-            Movie
+            Film
         </div>
     )
 }
