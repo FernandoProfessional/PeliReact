@@ -57,8 +57,12 @@ export const SingleContent = ({
   media_type,
   vote_average,
 }) => {
+
+  const hadleFilm = () => {
+    console.log('hola')
+  }
   return (
-    <Media>
+    <Media onClick={hadleFilm}>
       <Badge
         badgeContent={vote_average}
         color={vote_average > 7 ? "primary" : "secondary"}

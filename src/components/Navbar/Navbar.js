@@ -37,10 +37,13 @@ export const Navbar = () => {
   const [show, setShow] = useState(false)
 
   const history = useHistory()
+
   
   const changeNavbar = () => {
     if (window.scrollY > 100) {
-      setShow(true)
+ 
+        setShow(true)
+      
     }
     else 
       setShow(false)
@@ -53,12 +56,13 @@ export const Navbar = () => {
       }
     )
     return () => {
-      window.removeEventListener("scroll",changeNavbar,true)
+      window.removeEventListener("scroll",changeNavbar)
     }
-  }, [show])
+  }, [])
 
   const hadleLogOut = () => {
     history.replace('/index')
+    localStorage.setItem('user',JSON.stringify({logged:false}))
   }
 
   return (

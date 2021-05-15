@@ -18,6 +18,18 @@ export const useAxios = () => {
         return response
     }
 
+    const getListas = (mail) => {
+        return `http://139.162.137.96:8080/PeliCodigoServidor/rest/api/obtenerCollecciones?email=${mail}` 
+    }
+    const newLista = async(email,nameList) => {
+        const response = await axios.post(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/newList?email=${email}&nameCollection=${nameList}`) 
+        return response
+    }
+
+    const pelisLista = async(email,nameList) => {
+        const response = await axios.post(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/newList?email=${email}&nameCollection=${nameList}`) 
+        return response
+    }
 
 
     // TODO: Peticines a la la API PELICULAS
@@ -60,6 +72,9 @@ export const useAxios = () => {
         buscarPelicula,
         peliculasModa,
         actoresPelicula,
-        buscarTrailerPelicula
+        buscarTrailerPelicula,
+        getListas,
+        newLista,
+        pelisLista
     }
 }

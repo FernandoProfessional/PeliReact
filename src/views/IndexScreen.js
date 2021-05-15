@@ -110,9 +110,6 @@ const RegisterTitles = styled.p`
 
 export const IndexScreen = () => {
 
-   
-
-
 
     return (
         <Container>

@@ -1,7 +1,6 @@
-import { useLocation } from "react-router";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { useForm } from "../hooks/useForm";
-import queryString from "query-string";
 import axios from "axios";
 import React, { useState } from "react";
 import { SingleContent } from "../components/SingleContent/SingleContent";
@@ -59,13 +58,14 @@ const BodySearch = styled.div`
   min-height:100vh;
 `;
 
-export const BusquedaScreen = ({ history }) => {
-  const location = useLocation();
-  const { q = "" } = queryString.parse(location.search);
+export const BusquedaScreen = () => {
+
 
   const [formValues, handleInputChange] = useForm({
-    searchText: q,
+    searchText: '',
   });
+
+  const history =useHistory()
   const { searchText } = formValues;
   const [content, setContent] = useState([]);
   
@@ -80,10 +80,10 @@ export const BusquedaScreen = ({ history }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
-    history.push(`?q=${searchText}`);
     buscarPelicula(searchText)
   };
+
+
   console.log(history);
 
   return (
@@ -105,6 +105,7 @@ export const BusquedaScreen = ({ history }) => {
       <BodySearch>
         {content &&
           content.map((c) => (
+          
             <SingleContent
               key={c.id}
               id={c.id}
