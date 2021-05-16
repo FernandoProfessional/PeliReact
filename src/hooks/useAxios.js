@@ -17,18 +17,24 @@ export const useAxios = () => {
         console.log(response);
         return response
     }
+    //Listas
 
     const getListas = (mail) => {
-        return `http://139.162.137.96:8080/PeliCodigoServidor/rest/api/obtenerCollecciones?email=${mail}` 
+        return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/obtenerCollecciones?email=${mail}`) 
     }
-    const newLista = async(email,nameList) => {
-        const response = await axios.post(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/newList?email=${email}&nameCollection=${nameList}`) 
-        return response
+    const deleteLista = (idLista) => {
+        return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/deleteList?coleccionid=${idLista}`)
     }
 
-    const pelisLista = async(email,nameList) => {
-        const response = await axios.post(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/newList?email=${email}&nameCollection=${nameList}`) 
-        return response
+    const newLista = (email,nameList) => {
+        return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/newList?email=${email}&nameCollection=${nameList}`) 
+        
+    }
+    const pelisLista =(idLista) => {
+        return axios.post(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/obtenerPeliculasDeColeccion?coleccionid=${idLista}`) 
+    }
+    const addPeliLista = (idLista,idPeli) => {
+        return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/addPeliculaToLista?coleccionid=${idLista}&imdbid=${idPeli}`) 
     }
 
 
@@ -75,6 +81,8 @@ export const useAxios = () => {
         buscarTrailerPelicula,
         getListas,
         newLista,
-        pelisLista
+        pelisLista,
+        deleteLista,
+        addPeliLista
     }
 }
