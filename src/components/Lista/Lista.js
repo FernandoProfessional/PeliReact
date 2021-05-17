@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { ListaComponent } from "./style/Style";
 import { ListText } from "./style/Style";
@@ -34,3 +34,4 @@ export const Lista = ({ nameCollection, idCollecion }) => {
     </ListaComponent>
   );
 };
+ */

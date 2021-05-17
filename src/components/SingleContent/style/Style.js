@@ -5,7 +5,8 @@ export const Media = styled.div`
   flex-direction: column;
   width: 250px;
   padding: 5px;
-  margin: 5px 0;
+  margin-bottom:10px;
+  margin-right: 30px;
   background-color: #282c34;
   border-radius: 10px;
   position: relative;
@@ -24,6 +25,7 @@ export const Media = styled.div`
 `;
 export const PosterSingle = styled.img`
   border-radius: 10px;
+  width:100%;
 `;
 export const TitlePoster = styled.b`
   width: 100%;

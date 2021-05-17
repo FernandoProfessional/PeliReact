@@ -18,7 +18,7 @@ export const RouterContent = () => {
                 <Route exact path="/lista" component={ListaScreen}/>
                 <Route exact path="/movie" component={MovieScreen}/>
                 <Route exact path="/buscar" component={BusquedaScreen}/>
-                <Route exact path="/film/:id" component={FilmSelected}/>
+                <Route exact path="/film/:filmid" component={FilmSelected}/>
                 <Redirect to="/index"/>
             </Switch>
             <Footer/>
