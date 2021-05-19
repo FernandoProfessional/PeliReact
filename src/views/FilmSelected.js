@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router';
 import { Porcentaje } from '../components/Descripcion/Porcentaje';
 import DialogSelect from '../components/form/FormFilm';
 import { useAxios } from '../hooks/useAxios';
-import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer} from './style/StyleFilm';
+import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer,VideoError} from './style/StyleFilm';
 import {TituloPeli} from './style/StyleFilm';
 import {ContendorTituloPeli} from './style/StyleFilm';
 import {CotanerdorDescripcion} from './style/StyleFilm';
@@ -104,7 +104,11 @@ export const FilmSelected = () => {
             <ContenedorTrailer>
    
                 <FilmTrailer>
-                    <ReactPlayer  width='100%' height='100%' url={`https://www.youtube.com/watch?v=${trailerKey[0]}`}/>
+                    {(trailerKey.length > 0)?
+                    (<ReactPlayer  width='100%' height='100%' url={`https://www.youtube.com/watch?v=${trailerKey[0]}`}/>)
+                    :<VideoError>
+                        Trailer No Disponible
+                    </VideoError> }
                 </FilmTrailer>
                          
             </ContenedorTrailer>

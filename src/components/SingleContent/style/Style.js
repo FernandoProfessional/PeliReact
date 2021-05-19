@@ -18,8 +18,12 @@ export const Media = styled.div`
 /*   @media screen and (max-width: 992px) {
     width: 60%;
   } */
+  @media (max-width: 768px) {
+    margin-right: 10px;
+  }
   @media screen and (max-width: 550px) {
-    width: 46%;
+    width: 45%;
+    margin-right: 0;
   }
 
 `;

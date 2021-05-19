@@ -57,14 +57,20 @@ export const ListSpacion = styled.div`
 const ContainerFilm = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  padding: 0 100px 0 100px;
-  @media (max-width: 768px) {
-    margin: 0 10px 0 10px;
-    width: 49%;
-    padding: 0 10px 0 10px;
+  min-height:100vh;
+  padding:0 20px;
+  @media (max-width: 1200px) {
+    width:100%;
+    
   }
+  @media (max-width: 576px) {
+    padding:0;
+    width: 100%;
+  }
+
 `
 const TituloLista = styled.h2`
   text-align:center;
@@ -133,13 +139,14 @@ export const ListaScreen = () => {
   }
   const deleteFilms = async(idFilm,idLista,tituloPel) => {
     console.log("Borrar: idPeli:"+idFilm+" idLista:"+idLista + 'Titulo'+tituloPel)
-    let {data} = await deleteFilm(idFilm,idLista)
+    await deleteFilm(idFilm,idLista)
     verPeliculasLista(idLista,tituloPel)
   }
  
   
 
   useEffect(() => {
+    window.scroll(0,0);
     listaPeticion();
   }, []);
 
@@ -187,8 +194,8 @@ export const ListaScreen = () => {
             peliculas.map((peli) => (
               <ContenedorCardLista>
                 <ContainerDeleteBtn>
-                  <CircleDeleteBtn>
-                    <DeleteIcon onClick={()=>deleteFilms(peli.id,listaIdSelected,tituloLista)}/>
+                  <CircleDeleteBtn onClick={()=>deleteFilms(peli.id,listaIdSelected,tituloLista)}>
+                    <DeleteIcon />
                   </CircleDeleteBtn>
                 </ContainerDeleteBtn>
                 <SingleContent key={peli.id}
@@ -202,27 +209,6 @@ export const ListaScreen = () => {
               
             ))
           }
-{/*  
-          {(peliculas.length > 0)?
-           peliculas.map((peli) => (
-            <ContenedorCardLista>
-              <ContainerDeleteBtn>
-                <CircleDeleteBtn>
-                  <DeleteIcon onClick={()=>deleteFilms(peli.id,listaIdSelected)}/>
-                </CircleDeleteBtn>
-              </ContainerDeleteBtn>
-              <SingleContent key={peli.id}
-              id={peli.id}
-              poster={peli.poster_path}
-              title={peli.title || peli.name}
-              date={peli.first_air_date || peli.release_date}
-              media_type={peli.media_type}
-              vote_average={peli.vote_average}/>
-            </ContenedorCardLista>
-             
-           ))
-           :(<span>No hay Peliculas en la lista: {tituloLista}</span>)
-        } */}
       </ContainerFilm>
         
 

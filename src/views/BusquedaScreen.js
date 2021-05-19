@@ -2,7 +2,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { useForm } from "../hooks/useForm";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SingleContent } from "../components/SingleContent/SingleContent";
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -28,6 +28,7 @@ const ButtonSearch = styled.button`
   outline: none;
   font-size: 40px;
   cursor: pointer;
+  background-color: #006BE6;
 /*   @media (max-width: 1200px) {
     width: 15%;
   } */
@@ -48,6 +49,13 @@ const InputSearch = styled.input`
   } */
 `;
 
+/* 
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px,
+xxl: 1400px 
+*/
 const BodySearch = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -56,6 +64,14 @@ const BodySearch = styled.div`
   padding:20px;
   width: 70%;
   min-height:100vh;
+  @media (max-width: 992px) {
+    width: 90%;
+  }  
+  @media (max-width: 768px) {
+    padding:20px 0;
+    width: 100%;
+  }
+
 `;
 
 export const BusquedaScreen = () => {
@@ -82,7 +98,9 @@ export const BusquedaScreen = () => {
     e.preventDefault();
     buscarPelicula(searchText)
   };
-
+  useEffect(() => {
+    window.scroll(0,0);
+  }, [])
 
   console.log(history);
 

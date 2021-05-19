@@ -116,11 +116,22 @@ export const ContentDescripcion = styled.div`
 export const ContenedorTrailer = styled.div`
     background-color:white;
     width:100%;
+    display: flex;
+    justify-content:center;
 `
 
 export const FilmTrailer = styled.div`
    height:300px;
    width:500px;
 `
-
+export const VideoError = styled.div`
+   height:300px;
+   background-color:gray;
+   width:500px;
+   display: flex;
+   justify-content:center;
+   align-items:center;
+   color:white;
+   font-weight:bold;
+`
 

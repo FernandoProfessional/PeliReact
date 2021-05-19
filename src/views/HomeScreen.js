@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Carrousel } from "../components/carrousel/Carrousel";
 import { Slider } from "../components/Slider/Slider";
@@ -31,7 +31,14 @@ const peticionesApi = {
     "https://api.themoviedb.org/3/movie/upcoming?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US&page=2 ",
 };
 
+
+
 export const HomeScreen = () => {
+  
+  useEffect(() => {
+    window.scroll(0,0);
+  }, []);
+
   return (
     <Contenedor>
       <Slider />
