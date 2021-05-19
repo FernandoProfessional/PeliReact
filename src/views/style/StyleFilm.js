@@ -52,7 +52,7 @@ export const  HeaderDescripcion = styled.div`
     background-color:gray;
     color:white;
     display: flex;
-
+    margin-bottom:20px;
 `
 export const TituloDescripcion = styled.p`
     margin:0;
@@ -78,12 +78,13 @@ export const DuracionDescripcion = styled.div`
 export const MainDescripcion = styled.div`
     height:60px;
     width:100%;
-    background-color:violet;
     display: flex;
+    margin-bottom:20px;
 `
 export const ContentedorPunctuation = styled.div`
     display: flex;
     align-items: center;
+    margin-right:20px;
 `
 export const ContentedorPunctuationTexto = styled.div`
     margin-left:5px;
@@ -92,3 +93,34 @@ export const ContentedorPunctuationTexto = styled.div`
     font-size:16px;
     color:white;
 `
+export const TextDescripcion = styled.div`
+
+
+`
+export const TaglineDescripcion = styled.div`
+    opacity:0.7;
+    color:white;
+    font-style: italic;
+`
+
+export const TitleDescripcion = styled.div`
+    color:white;
+    font-weight:bold;
+    margin:10px 0 10px 0;
+`
+export const ContentDescripcion = styled.div`
+    color:white;
+    font-size:18px;
+`
+
+export const ContenedorTrailer = styled.div`
+    background-color:white;
+    width:100%;
+`
+
+export const FilmTrailer = styled.div`
+   height:300px;
+   width:500px;
+`
+
+

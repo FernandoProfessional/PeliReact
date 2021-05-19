@@ -12,7 +12,15 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useAxios } from '../../hooks/useAxios';
 import { AuthContext } from '../auth/AuthContext';
+import styled from "styled-components";
 
+const ButtonAddListFilm = styled.div`
+  color:white;
+  background-color:#006BE6;
+  padding:20px 5px;
+  border-radius:10px;
+  cursor:pointer;
+`
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -65,7 +73,7 @@ export default function DialogSelect({idPeli}) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>Add List</Button>
+      <ButtonAddListFilm onClick={handleClickOpen}>Add List</ButtonAddListFilm>
       <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose}>
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent>

@@ -4,7 +4,7 @@ import { useAxios } from "../hooks/useAxios";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 // import { Lista } from "../components/Lista/Lista";
 import { useForm } from "../hooks/useForm";
-import { ListaConatainer } from "./style/StyleLista";
+import { CircleDeleteBtn, ContainerDeleteBtn, ListaConatainer, ContenedorCardLista} from "./style/StyleLista";
 import { ContainerLista } from "./style/StyleLista";
 import { ContainerIconAdd } from "./style/StyleLista";
 import { TextIconAdd } from "./style/StyleLista";
@@ -13,7 +13,7 @@ import { IconoAddList } from "./style/StyleLista";
 import styled from "styled-components";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { SingleContent } from "../components/SingleContent/SingleContent";
-
+import DeleteIcon from '@material-ui/icons/Delete';
 export const ListaComponent = styled.div`
     cursor: pointer;
   color:#006BE6;
@@ -81,7 +81,7 @@ const AvisoTitulo = styled.p`
 
 
 export const ListaScreen = () => {
-  let { getListas, newLista,deleteLista,pelisLista,findByIdPeli} = useAxios();
+  let { getListas, newLista,deleteLista,pelisLista,findByIdPeli,deleteFilm} = useAxios();
   const {
     user: { mail },
   } = useContext(AuthContext);
@@ -89,6 +89,7 @@ export const ListaScreen = () => {
   const [listasPeliculas, setListasPeliculas] = useState([]);
 
   const [peliculas, setPeliculas] = useState([])
+  const [listaIdSelected, setlistaIdSelected] = useState('')
 
   const [tituloLista, setTituloLista] = useState('')
 
@@ -123,13 +124,18 @@ export const ListaScreen = () => {
       const listaTmdb = []
       for (const idPeli of allId) {
         const {data} = await findByIdPeli(idPeli)
-        listaTmdb.push(data)        
+        listaTmdb.push(data)       
       }
+      setlistaIdSelected(idLista)
       setTituloLista(tituloLista)
       setPeliculas(listaTmdb)
-      console.log(peliculas)
+      
   }
-  
+  const deleteFilms = async(idFilm,idLista,tituloPel) => {
+    console.log("Borrar: idPeli:"+idFilm+" idLista:"+idLista + 'Titulo'+tituloPel)
+    let {data} = await deleteFilm(idFilm,idLista)
+    verPeliculasLista(idLista,tituloPel)
+  }
  
   
 
@@ -152,11 +158,6 @@ export const ListaScreen = () => {
         </ContainerIconAdd>
         {listasPeliculas && listasPeliculas.length > 0 ? (
           listasPeliculas.map((elemento) => (
- /*            <Lista
-              key={elemento.idColecciones}
-              idCollecion={elemento.idColecciones}
-              nameCollection={elemento.nameCollection}
-            /> */
             <ListaComponent onClick={()=>verPeliculasLista(elemento.idColecciones,elemento.nameCollection)}>
             <ListText>{elemento.nameCollection}</ListText>
             <ListIcon>
@@ -178,24 +179,50 @@ export const ListaScreen = () => {
         )}
       </ContainerLista>
 
-      {(peliculas.length > 0)?(<TituloLista>{tituloLista}</TituloLista>):(<AvisoTitulo>No hay Peliculas en la lista: {tituloLista}</AvisoTitulo>)}
+      {(peliculas.length > 0)?(<TituloLista>{tituloLista}</TituloLista>):(<AvisoTitulo>Seleccione o cree una lista</AvisoTitulo>)}
+
 
       <ContainerFilm>
-
+        {peliculas &&
+            peliculas.map((peli) => (
+              <ContenedorCardLista>
+                <ContainerDeleteBtn>
+                  <CircleDeleteBtn>
+                    <DeleteIcon onClick={()=>deleteFilms(peli.id,listaIdSelected,tituloLista)}/>
+                  </CircleDeleteBtn>
+                </ContainerDeleteBtn>
+                <SingleContent key={peli.id}
+                id={peli.id}
+                poster={peli.poster_path}
+                title={peli.title || peli.name}
+                date={peli.first_air_date || peli.release_date}
+                media_type={peli.media_type}
+                vote_average={peli.vote_average}/>
+              </ContenedorCardLista>
+              
+            ))
+          }
+{/*  
           {(peliculas.length > 0)?
            peliculas.map((peli) => (
-        
-            <SingleContent key={peli.id}
-            id={peli.id}
-            poster={peli.poster_path}
-            title={peli.title || peli.name}
-            date={peli.first_air_date || peli.release_date}
-            media_type={peli.media_type}
-            vote_average={peli.vote_average}/>
+            <ContenedorCardLista>
+              <ContainerDeleteBtn>
+                <CircleDeleteBtn>
+                  <DeleteIcon onClick={()=>deleteFilms(peli.id,listaIdSelected)}/>
+                </CircleDeleteBtn>
+              </ContainerDeleteBtn>
+              <SingleContent key={peli.id}
+              id={peli.id}
+              poster={peli.poster_path}
+              title={peli.title || peli.name}
+              date={peli.first_air_date || peli.release_date}
+              media_type={peli.media_type}
+              vote_average={peli.vote_average}/>
+            </ContenedorCardLista>
              
            ))
-           :(<span></span>)
-        }
+           :(<span>No hay Peliculas en la lista: {tituloLista}</span>)
+        } */}
       </ContainerFilm>
         
 

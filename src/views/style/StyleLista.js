@@ -95,3 +95,31 @@ export const IconoAddList = styled.div`
     }
 
 `
+
+export const ContainerDeleteBtn = styled.div`
+
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width:90%;
+    padding: 10px 0;
+
+`
+export const CircleDeleteBtn = styled.div`
+    background-color:green;
+    width:45px;
+    height:45px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    &:hover {
+        background-color:white;
+    }
+`
+export const ContenedorCardLista = styled.div`
+   
+
+
+`
+

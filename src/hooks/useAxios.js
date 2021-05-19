@@ -37,6 +37,9 @@ export const useAxios = () => {
     const addPeliLista = (idLista,idPeli) => {
         return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/addPeliculaToLista?coleccionid=${idLista}&imdbid=${idPeli}`) 
     }
+    const deleteFilm = (idPeli,iLista) => {
+        return axios.get(`http://139.162.137.96:8080/PeliCodigoServidor/rest/api/removePeliculaFromLista?coleccionid=${iLista}&imdbid=${idPeli}`)
+    }
 
 
     // TODO: Peticines a la la API PELICULAS
@@ -67,11 +70,10 @@ export const useAxios = () => {
         return response
     }
 
-    const buscarTrailerPelicula = async(idFilm) => {
-        let {data}  = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)    
+    const buscarTrailerPelicula = (idFilm) => {
+        return axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)    
         // https://www.youtube.com/watch?v=SUXWAEX2jlg
         // valor = response.data.results.map(ele => ele.key)
-        return  data.results[0]    
     }
 
 
@@ -89,6 +91,7 @@ export const useAxios = () => {
         pelisLista,
         deleteLista,
         addPeliLista,
-        findByIdPeli
+        findByIdPeli,
+        deleteFilm
     }
 }
