@@ -12,9 +12,10 @@ const ButtonRegister = styled.button`
   color:white;
   font-size: 25px;
   width:200px;
-  height:40px;
+  height:50px;
   border:none;
   border-radius:5px;
+  cursor: pointer;
 `
 
 export default function RegisterDialog() {
@@ -34,17 +35,19 @@ export default function RegisterDialog() {
           Register
         </ButtonRegister>
         <Dialog
+                  style={{backgroundColor: 'hsla( 0.6turn , 100% , 50% , 0.5 )'}}
+
           open={open}
          /*  onClose={handleClose} */
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Register Form"}</DialogTitle>
-          <DialogContent>
+          <DialogTitle  style={{backgroundColor: '#59849C',color:'white'}} id="alert-dialog-title">{"Register Form"}</DialogTitle>
+          <DialogContent style={{backgroundColor: '#59849C',color:'white'}}>
             <RegistrationForm handleClose={handleClose}/>
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary" autoFocus>
+          <DialogActions style={{backgroundColor: '#59849C',color:'white'}}>
+            <Button onClick={handleClose} color="primary" autoFocus style={{color:'white'}}>
               Close
             </Button> 
        

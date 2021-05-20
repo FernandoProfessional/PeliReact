@@ -20,37 +20,41 @@ export const ContendorTituloPeli = styled.div`
     padding:20px 0 20px 0;
 `
 
-export const CotanerdorDescripcion = styled.div`
-    background-color:blue;
-    height:570px;
+/* export const CotanerdorDescripcion = styled.div`
+    min-height:570px;
     display: flex;
     justify-content:center;
-`
-export const ContenidoPeli = styled.div`
-    background-color:brown;
+    align-items: center;
+    
+` */
+/* export const ContenidoPeli = styled.div`
+  
     height:100%;
     width:80%;
     display: flex;
     justify-content:center;
-    align-items:center;
-`
+    
+` */
 export const PosterPeli = styled.div`
-    background-color:red;
-    height:90%;
+/*     background-color:red;
+ */    height:100%;
     width:25%;
     display: flex;
     justify-content:center;
     align-items:center;
 `
 export const NoPosterPeli = styled.div`
-    background-color:green;
-    height:90%;
+    height:100%;
     width:75%;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+   
 
 `
 export const  HeaderDescripcion = styled.div`
-    background-color:gray;
-    color:white;
+/*     background-color:gray;
+ */    color:white;
     display: flex;
     margin-bottom:20px;
 `
@@ -84,10 +88,10 @@ export const MainDescripcion = styled.div`
 export const ContentedorPunctuation = styled.div`
     display: flex;
     align-items: center;
-    margin-right:20px;
+    margin-right:20%;
 `
 export const ContentedorPunctuationTexto = styled.div`
-    margin-left:5px;
+    margin-left:20px;
     display: flex;
     flex-direction:column;
     font-size:16px;
@@ -111,18 +115,20 @@ export const TitleDescripcion = styled.div`
 export const ContentDescripcion = styled.div`
     color:white;
     font-size:18px;
+    margin-bottom:10px;
 `
 
 export const ContenedorTrailer = styled.div`
-    background-color:white;
-    width:100%;
+/*     background-color:white;
+ */    width:100%;
     display: flex;
     justify-content:center;
+    background-color:#141414;
 `
 
 export const FilmTrailer = styled.div`
-   height:300px;
-   width:500px;
+   height:600px;
+   width:800px;
 `
 export const VideoError = styled.div`
    height:300px;
@@ -135,3 +141,7 @@ export const VideoError = styled.div`
    font-weight:bold;
 `
 
+export const ContenedorActores = styled.div`
+    background-color:gray;
+    width:100%;
+`

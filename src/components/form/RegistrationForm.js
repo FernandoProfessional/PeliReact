@@ -10,8 +10,8 @@ const RegistrationForm = ({handleClose}) => {
 
     const {register} = useAxios()
 
-    const paperStyle = { padding: '0 15px 40px 15px', width: 250, }
-    const btnStyle = { marginTop: 10 }
+    const paperStyle = { padding: '0 15px 5px 15px', width: 250, backgroundColor: '#59849C',color:'white' }
+    const btnStyle = { marginTop: 10,color:'white',backgroundColor: '#006BE6' }
     const passwordRegExp=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
 
     const initialValues = {

@@ -17,11 +17,6 @@ xxl: 1400px
 */
 const Container = styled.div`
     min-height:100vh;
-    max-width:100%;
-/*     background-image:url(${fondo});
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position:center; */
     background-color:#70040A;
 
 `
@@ -38,11 +33,11 @@ const NavIndex = styled.div`
 
 const BodyIndex = styled.div`
     width: 100%;
-    background-color:#70040A;
-    min-height:92vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
+    background-image: url(${({grabadora})=>grabadora});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    height:92vh;
 `
 const ContainerSN = styled.div`
 
@@ -96,16 +91,53 @@ const ButtonInstagram = styled.a`
     border-radius: 50%;
 `;
 const ContainerRegister = styled.div`
+    width: 50%;
+    height:50%;
     display: flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
+    border-radius: 15px;
+    opacity: 0.8;
+    background-color:#70040A;
+    @media (max-width: 992px) {
+        width: 80%;
+        height:70%;
+    }
 `
 const RegisterTitles = styled.p`
     font-size:50px;
     margin:0;
-    color:white;
+    color:gray;
     font-weight:bold;
+    text-align: center;
+    @media (max-width: 992px) {
+        font-size:40px;
+
+    }
+`
+const RegisterQuestion = styled.p`
+    font-size:30px;
+    margin:15px 0;
+    color:gray;
+    font-weight:bold;
+    text-align: center;
+
+    @media (max-width: 992px) {
+        font-size:20px;
+
+    }
+`
+
+const ContenedorImagenes = styled.div`
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: saturate(180%);
+
 `
 
 export const IndexScreen = () => {
@@ -113,6 +145,7 @@ export const IndexScreen = () => {
 
     return (
         <Container>
+            
             <NavIndex>
                 <ContainerLogoLogin>
                     <Logo/>
@@ -130,12 +163,16 @@ export const IndexScreen = () => {
                     </ButtonInstagram>
                 </ContainerSN>
             </NavIndex>
-            <BodyIndex>
-                <ContainerRegister>
-                    <RegisterTitles>Organize your movies</RegisterTitles>
-                    <p>Have you seen a lot of movies?</p>
-                    <RegisterDialog/>
-                </ContainerRegister>
+            <BodyIndex grabadora={process.env.PUBLIC_URL + '/img/peliculas.jpg'}>
+                <ContenedorImagenes >
+  
+                
+                    <ContainerRegister>
+                        <RegisterTitles>Organize your movies</RegisterTitles>
+                        <RegisterQuestion>Have you seen a lot of movies?</RegisterQuestion>
+                        <RegisterDialog/>
+                    </ContainerRegister>
+                </ContenedorImagenes>
             </BodyIndex>
         </Container>
     )

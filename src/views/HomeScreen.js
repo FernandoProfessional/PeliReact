@@ -29,6 +29,8 @@ const peticionesApi = {
     "https://api.themoviedb.org/3/movie/top_rated?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US&page=1&region=es",
   upcoming:
     "https://api.themoviedb.org/3/movie/upcoming?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US&page=2 ",
+  reomended:
+  "https://api.themoviedb.org/3/movie/238/similar?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US&page=1",
 };
 
 
@@ -53,6 +55,10 @@ export const HomeScreen = () => {
         <ContainerTituloCarrousel>
             <Titulo>Upcoming</Titulo>
             <Carrousel enlaceApi={peticionesApi.upcoming} />
+        </ContainerTituloCarrousel>
+        <ContainerTituloCarrousel>
+            <Titulo>Recommended</Titulo>
+            <Carrousel enlaceApi={peticionesApi.reomended} />
         </ContainerTituloCarrousel>
     </Contenedor>
   );

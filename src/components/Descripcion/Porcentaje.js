@@ -10,7 +10,6 @@ export const Porcentaje = ({ vote_average }) => {
       style={{
         width: 50,
         height: 50,
-        backgroundColor: "red",
         borderRadius: "50%",
       }}
     >
@@ -23,11 +22,11 @@ export const Porcentaje = ({ vote_average }) => {
           strokeLinecap: "butt",
 
           textSize: "30px",
-          pathTransitionDuration: 0.5,
+          pathTransitionDuration: 1,
           pathColor: `black`,
           textColor: "white",
-          trailColor: "white",
-          backgroundColor: "black",
+          trailColor: "red",
+          backgroundColor: "red",
         })}
       />
     </div>

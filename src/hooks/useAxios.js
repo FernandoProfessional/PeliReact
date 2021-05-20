@@ -64,10 +64,8 @@ export const useAxios = () => {
     // https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US
 
     // Actores de la pelicula
-    const actoresPelicula = async(idFilm) => {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/credits?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)
-        console.log(response);
-        return response
+    const actoresPelicula = (idFilm) => {
+        return axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/credits?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`)
     }
 
     const buscarTrailerPelicula = (idFilm) => {

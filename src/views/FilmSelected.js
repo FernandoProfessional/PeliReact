@@ -3,11 +3,11 @@ import { useRouteMatch } from 'react-router';
 import { Porcentaje } from '../components/Descripcion/Porcentaje';
 import DialogSelect from '../components/form/FormFilm';
 import { useAxios } from '../hooks/useAxios';
-import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer,VideoError} from './style/StyleFilm';
+import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer,VideoError, ContenedorActores} from './style/StyleFilm';
 import {TituloPeli} from './style/StyleFilm';
 import {ContendorTituloPeli} from './style/StyleFilm';
-import {CotanerdorDescripcion} from './style/StyleFilm';
-import {ContenidoPeli} from './style/StyleFilm';
+// import {CotanerdorDescripcion} from './style/StyleFilm';
+// import {ContenidoPeli} from './style/StyleFilm';
 import {PosterPeli} from './style/StyleFilm';
 import {NoPosterPeli} from './style/StyleFilm';
 import {HeaderDescripcion} from './style/StyleFilm';
@@ -21,10 +21,49 @@ import {ContentedorPunctuation} from './style/StyleFilm';
 import {ContentedorPunctuationTexto} from './style/StyleFilm';
 import ReactPlayer from 'react-player'
 import axios from 'axios';
+import styled from "styled-components";
+
+const ContenidoPeli = styled.div`
+    /* background-color:${({fondo})=>fondo}; */
+/*     background-image: url(${({fondo})=>fondo});
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position-x:center;
+    opacity: 0.4; */
+    height:100%;
+    width:80%;
+    display: flex;
+    justify-content:center;
+    
+`   
+const CotanerdorDescripcion = styled.div`
+    height:570px;
+    width:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+   
+    background-image: url(${({fondo})=>fondo});
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position-x:center;
+  
+` 
+const FiltroImagen = styled.div`
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:100%;
+    width:100%;
+    background: rgba(0,0,0,0.8);
+  backdrop-filter: saturate(180%) blur(5px);
+`
+
 
 export const FilmSelected = () => {
-    const {findByIdPeli} = useAxios()
+    const {findByIdPeli,actoresPelicula} = useAxios()
     const [peli, setPeli] = useState({})
+    const [actores, setActores] = useState([])
     const [trailerKey, setTrailerKey] = useState([])
     const match = useRouteMatch()
 
@@ -35,7 +74,6 @@ export const FilmSelected = () => {
     }
 
     const peticionTrailer = async(idFilm) => {
-        console.log('Id Trailer: '+ idFilm)
         axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US`).then(res => {
             let listaKey = res.data.results.map(ele => ele.key)
             setTrailerKey(listaKey)
@@ -43,18 +81,27 @@ export const FilmSelected = () => {
         })
     }
 
+    const peticionPeliculas = async(idFilm) => {
+        const {data}= await actoresPelicula(idFilm)
+        setActores(data.cast)
+    }
+
     useEffect(() => {
+        window.scroll(0,0);
         datoPelicula(match.params.filmid)
         peticionTrailer(match.params.filmid)
+        peticionPeliculas(match.params.filmid)
     }, [])
 
     return (
         <FilmContainer>
-            <ContendorTituloPeli>
+{/*             <ContendorTituloPeli>
                 <TituloPeli>{peli.title}</TituloPeli>
-            </ContendorTituloPeli>
-            <CotanerdorDescripcion>
-                <ContenidoPeli>
+            </ContendorTituloPeli> */}
+            <CotanerdorDescripcion fondo={`https://www.themoviedb.org/t/p/w1280${peli.backdrop_path}`}>
+                <FiltroImagen>
+                <ContenidoPeli fondo={`https://www.themoviedb.org/t/p/w1280${peli.backdrop_path}`}>
+                    
                     <PosterPeli>
                         <img src={`https://www.themoviedb.org/t/p/w300/${peli.poster_path}`} alt="" />
                     </PosterPeli>
@@ -93,13 +140,19 @@ export const FilmSelected = () => {
                             </TitleDescripcion>
                             <ContentDescripcion>
                                 {peli.overview}
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique pariatur nihil temporibus, ipsa facilis eaque nobis inventore non. Possimus, corrupti aliquid rem exercitationem officiis porro rerum illum eaque deserunt repudiandae.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique pariatur nihil temporibus, ipsa facilis eaque nobis inventore non. Possimus, corrupti aliquid rem exercitationem officiis porro rerum illum eaque deserunt repudiandae.
                             </ContentDescripcion>
 
                         </TextDescripcion>
+                        <ContenedorActores>
+                            
+                        </ContenedorActores>
 
                     </NoPosterPeli>
 
                 </ContenidoPeli>
+                </FiltroImagen>
             </CotanerdorDescripcion>
             <ContenedorTrailer>
    

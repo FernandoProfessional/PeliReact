@@ -10,13 +10,14 @@ import styled from "styled-components";
 const ButtonLogin = styled.button`
   background-color:#006BE6;
   width:140px;
-  height:30px;
+  height:40px;
   font-size:20px;
   color:white;
   outline:none;
   border:none;
   border-radius:5px;
   margin-left: 35px;
+  cursor:pointer;
   &:hover{
     background-color:#338EF5;
   }
@@ -39,20 +40,22 @@ export default function LoginDialog() {
         <ButtonLogin onClick={handleClickOpen}>
           Login
         </ButtonLogin>
-        <Dialog
+        <Dialog   
+          style={{backgroundColor: 'hsla( 0.6turn , 100% , 50% , 0.5 )'}}
+
           open={open}
          /*  onClose={handleClose} */
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Login Form"}</DialogTitle>
-          <DialogContent>
+          <DialogTitle  style={{backgroundColor: '#59849C',color:'white'}} id="alert-dialog-title">{"Login Form"}</DialogTitle>
+          <DialogContent style={{backgroundColor: '#59849C'}}>
 
-            <LoginForm handleClose={handleClose}/>
+            <LoginForm handleClose={handleClose} />
 
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary" autoFocus>
+          <DialogActions style={{backgroundColor: '#59849C'}}>
+            <Button onClick={handleClose}  style={{color: 'white'}} autoFocus>
               Close
             </Button> 
        

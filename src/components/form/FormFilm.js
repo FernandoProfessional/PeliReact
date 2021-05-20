@@ -15,9 +15,9 @@ import { AuthContext } from '../auth/AuthContext';
 import styled from "styled-components";
 
 const ButtonAddListFilm = styled.div`
-  color:white;
+  color:#70040A;
   background-color:#006BE6;
-  padding:20px 5px;
+  padding:20px 30px;
   border-radius:10px;
   cursor:pointer;
 `

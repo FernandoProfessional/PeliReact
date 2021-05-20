@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./style.css";
+import { Link } from 'react-router-dom';
 
 
 const handleDragStart = (e) => e.preventDefault();
@@ -40,14 +41,17 @@ export const Carrousel = ({enlaceApi}) => {
     }
   
     const items = content.map((c) => (
-      <div className="carrouselItem" onClick={() =>hadleTitel(c.id)}>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${c.backdrop_path}?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4`}
-          alt=""
-          onDragStart={handleDragStart}
-          className="carrouselItem__img"
-        />
-      </div>
+      <Link to={`./film/${ c.id }`}>
+        <div className="carrouselItem" onClick={() =>hadleTitel(c.id)}>
+          
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${c.backdrop_path}?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4`}
+              alt=""
+              onDragStart={handleDragStart}
+              className="carrouselItem__img"
+            />
+        </div>
+      </Link>
     ));
   
   

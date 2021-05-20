@@ -24,8 +24,8 @@ const LoginForm = ({handleClose}) => {
 
     let history = useHistory()
     const{login} = useAxios()
-    const paperStyle = { padding: '0 15px 40px 15px', width: 250, }
-    const btnStyle = { marginTop: 10 }
+    const paperStyle = { padding: '0 15px 10px 15px', width: 250, backgroundColor: '#59849C',color:'white'}
+    const btnStyle = { marginTop: 10, color:'',backgroundColor: '#006BE6'}
     const passwordRegExp=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
     const initialValues = {
         email: '',
@@ -54,11 +54,9 @@ const LoginForm = ({handleClose}) => {
         }
     }
     return (
-        <Grid>
+        <Grid style={{backgroundColor: 'gray'}}>
             <Paper elevation={0} style={paperStyle}>
-                <Grid align='center'>
-                    <Typography variant='caption'>LOGIN</Typography>
-                </Grid>
+
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
                         <Form noValidate>
@@ -72,7 +70,7 @@ const LoginForm = ({handleClose}) => {
                                 helperText={<ErrorMessage name='password' />} required />
 
                             <Button type='submit' style={btnStyle} variant='contained'
-                                color='primary'>Login</Button>
+                             >Login</Button>
                         </Form>
                     )}
                 </Formik>
