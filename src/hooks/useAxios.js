@@ -57,8 +57,7 @@ export const useAxios = () => {
 
     const peliculasModa = async() => {
         const {data} = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4`)
-/*         console.log(response);
- */        return data.results
+         return data.results
     }
 
     // https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US
@@ -74,7 +73,9 @@ export const useAxios = () => {
         // valor = response.data.results.map(ele => ele.key)
     }
 
-
+    const similarMovies = (idFilm) => {
+        return axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/similar?api_key=3c10d1cb4174fb0e29e61cd194e5ecf4&language=en-US&page=1`)
+    }
 
 
     return {
@@ -90,6 +91,7 @@ export const useAxios = () => {
         deleteLista,
         addPeliLista,
         findByIdPeli,
-        deleteFilm
+        deleteFilm,
+        similarMovies
     }
 }

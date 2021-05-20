@@ -16,7 +16,7 @@ export const TituloPeli = styled.h2`
 `
 export const ContendorTituloPeli = styled.div`
     width: 100%;
-    background-color:red;
+  
     padding:20px 0 20px 0;
 `
 
@@ -40,6 +40,7 @@ export const PosterPeli = styled.div`
  */    height:100%;
     width:25%;
     display: flex;
+    
     justify-content:center;
     align-items:center;
 `
@@ -49,7 +50,6 @@ export const NoPosterPeli = styled.div`
     display: flex;
     flex-direction:column;
     justify-content:center;
-   
 
 `
 export const  HeaderDescripcion = styled.div`
@@ -115,20 +115,29 @@ export const TitleDescripcion = styled.div`
 export const ContentDescripcion = styled.div`
     color:white;
     font-size:18px;
-    margin-bottom:10px;
+    margin-bottom:26px;
 `
 
 export const ContenedorTrailer = styled.div`
-/*     background-color:white;
- */    width:100%;
+    padding: 30px 0 20px 0;
+    width:100%;
     display: flex;
-    justify-content:center;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
     background-color:#141414;
 `
 
 export const FilmTrailer = styled.div`
-   height:600px;
+   height: 600px;
    width:800px;
+   @media (max-width:820px){
+        width:600px;
+        height: 400px;
+   }
+   @media (max-width:600px){
+        width:500px;
+        height: 300px;
+   }
 `
 export const VideoError = styled.div`
    height:300px;
@@ -142,6 +151,46 @@ export const VideoError = styled.div`
 `
 
 export const ContenedorActores = styled.div`
-    background-color:gray;
+    margin-top: 50px;
+    height: 345px;
     width:100%;
+    padding: 20px 20px;
+   margin-bottom: 30px;
+` 
+
+
+export const TitulosRemondado = styled.p`
+    color: white;
+    font-size: 25px;
+    text-align:center;
+    font-weight: bold;
 `
+
+
+export const ListaRecomendacion = styled.div`
+    width: 500px;
+    height:500px;
+    background-color:#141414;
+    overflow-y: auto;
+    padding: 10px;
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px white; 
+        border-radius: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: gray; 
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: gray; 
+    }
+`
+

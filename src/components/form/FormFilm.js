@@ -19,6 +19,7 @@ const ButtonAddListFilm = styled.div`
   background-color:#006BE6;
   padding:20px 30px;
   border-radius:10px;
+  font-size:16px;
   cursor:pointer;
 `
 const useStyles = makeStyles((theme) => ({

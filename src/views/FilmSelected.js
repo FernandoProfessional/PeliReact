@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router';
 import { Porcentaje } from '../components/Descripcion/Porcentaje';
 import DialogSelect from '../components/form/FormFilm';
 import { useAxios } from '../hooks/useAxios';
-import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer,VideoError, ContenedorActores} from './style/StyleFilm';
+import {FilmContainer, TextDescripcion, TaglineDescripcion, TitleDescripcion,ContentDescripcion, FilmTrailer, ContenedorTrailer,VideoError, ContenedorActores,ListaRecomendacion, TitulosRemondado} from './style/StyleFilm';
 import {TituloPeli} from './style/StyleFilm';
 import {ContendorTituloPeli} from './style/StyleFilm';
 // import {CotanerdorDescripcion} from './style/StyleFilm';
@@ -22,22 +22,23 @@ import {ContentedorPunctuationTexto} from './style/StyleFilm';
 import ReactPlayer from 'react-player'
 import axios from 'axios';
 import styled from "styled-components";
+import { Recomendacion } from '../components/Recomendacion/Recomendacion';
+import { ActoresCarrousel } from '../components/Actores/ActoresCarrousel';
 
 const ContenidoPeli = styled.div`
-    /* background-color:${({fondo})=>fondo}; */
-/*     background-image: url(${({fondo})=>fondo});
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position-x:center;
-    opacity: 0.4; */
+
     height:100%;
     width:80%;
     display: flex;
     justify-content:center;
+    align-items: center;
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
     
 `   
 const CotanerdorDescripcion = styled.div`
-    height:570px;
+    min-height:570px;
     width:100%;
     display: flex;
     justify-content:center;
@@ -53,17 +54,29 @@ const FiltroImagen = styled.div`
     display: flex;
     justify-content:center;
     align-items: center;
-    height:100%;
+    min-height:100%;
     width:100%;
     background: rgba(0,0,0,0.8);
   backdrop-filter: saturate(180%) blur(5px);
 `
+const ContenedorRecomendacionEnlaces = styled.div`
+    
+`
+const ActoresTitulo = styled.p`
+    text-align:center;
+    color: white;
+    margin: 0 0 20px 0;
+    font-size:25px;
+    font-weight:bold;
+
+`
 
 
 export const FilmSelected = () => {
-    const {findByIdPeli,actoresPelicula} = useAxios()
+    const {findByIdPeli, actoresPelicula, similarMovies} = useAxios()
     const [peli, setPeli] = useState({})
     const [actores, setActores] = useState([])
+    const [listaSimilar, setListaSimilar] = useState([])
     const [trailerKey, setTrailerKey] = useState([])
     const match = useRouteMatch()
 
@@ -83,7 +96,13 @@ export const FilmSelected = () => {
 
     const peticionPeliculas = async(idFilm) => {
         const {data}= await actoresPelicula(idFilm)
+        console.log(data.cast)
         setActores(data.cast)
+    }
+
+    const peticionSimilar = async(idFile) => {
+        const {data} = await similarMovies(idFile)
+        setListaSimilar(data.results)
     }
 
     useEffect(() => {
@@ -91,13 +110,11 @@ export const FilmSelected = () => {
         datoPelicula(match.params.filmid)
         peticionTrailer(match.params.filmid)
         peticionPeliculas(match.params.filmid)
+        peticionSimilar(match.params.filmid)
     }, [])
 
     return (
         <FilmContainer>
-{/*             <ContendorTituloPeli>
-                <TituloPeli>{peli.title}</TituloPeli>
-            </ContendorTituloPeli> */}
             <CotanerdorDescripcion fondo={`https://www.themoviedb.org/t/p/w1280${peli.backdrop_path}`}>
                 <FiltroImagen>
                 <ContenidoPeli fondo={`https://www.themoviedb.org/t/p/w1280${peli.backdrop_path}`}>
@@ -141,13 +158,11 @@ export const FilmSelected = () => {
                             <ContentDescripcion>
                                 {peli.overview}
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique pariatur nihil temporibus, ipsa facilis eaque nobis inventore non. Possimus, corrupti aliquid rem exercitationem officiis porro rerum illum eaque deserunt repudiandae.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique pariatur nihil temporibus, ipsa facilis eaque nobis inventore non. Possimus, corrupti aliquid rem exercitationem officiis porro rerum illum eaque deserunt repudiandae.
+         
                             </ContentDescripcion>
 
                         </TextDescripcion>
-                        <ContenedorActores>
-                            
-                        </ContenedorActores>
+     
 
                     </NoPosterPeli>
 
@@ -163,7 +178,18 @@ export const FilmSelected = () => {
                         Trailer No Disponible
                     </VideoError> }
                 </FilmTrailer>
-                         
+                <ContenedorRecomendacionEnlaces>
+                    <TitulosRemondado>Recommend</TitulosRemondado>
+                    <ListaRecomendacion>
+                        {listaSimilar && listaSimilar.map((elemento)=>(<Recomendacion key={elemento.key} poster={elemento.backdrop_path} tituloPeli={elemento.title} idPelicula={elemento.id}/>))}
+                    </ListaRecomendacion>
+                </ContenedorRecomendacionEnlaces>
+                <ContenedorActores>
+                    <ActoresTitulo>Actores</ActoresTitulo>
+                    <ActoresCarrousel listaPersonajes={actores}/>
+                       
+                </ContenedorActores>
+                
             </ContenedorTrailer>
         </FilmContainer>
     )

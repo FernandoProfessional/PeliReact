@@ -94,12 +94,12 @@ export const Navbar = () => {
                 Mi Lista
               </ContenedorTexto>  
             </ContenedorEnlace>
-            <ContenedorEnlace exact="true" to="/movie">
+{/*             <ContenedorEnlace exact="true" to="/movie">
               <MovieIcon />
               <ContenedorTexto>
                 Movie
               </ContenedorTexto>
-            </ContenedorEnlace>
+            </ContenedorEnlace> */}
           </ContenedorEnlaces>
         </ContenedorEnlacesLogo>
 
