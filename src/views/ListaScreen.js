@@ -180,13 +180,13 @@ export const ListaScreen = () => {
           ))
         ) : (
           <TextoListaVacia>
-            No tiene listas. Escriba el nombre de la lista y haga click en el
+            No tiene listas en su cuenta. Escriba el nombre de la lista y haga click en el
             icono.
           </TextoListaVacia>
         )}
       </ContainerLista>
 
-      {(peliculas.length > 0)?(<TituloLista>{tituloLista}</TituloLista>):(<AvisoTitulo>Seleccione o cree una lista</AvisoTitulo>)}
+      {(peliculas.length > 0)?(<TituloLista>{tituloLista}</TituloLista>):(<AvisoTitulo>Seleccione una lista o agrege peliculas a su lista</AvisoTitulo>)}
 
 
       <ContainerFilm>

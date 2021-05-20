@@ -58,7 +58,7 @@ export const BotonLogOut = styled.button`
   background-color: #141414;
   border:none;
   outline:none;
-  color: white;
+  color: red;
   font-size:17px;
   cursor:pointer;
 `

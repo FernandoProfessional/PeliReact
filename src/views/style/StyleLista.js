@@ -84,6 +84,7 @@ export const TextoListaVacia = styled.div`
     display: flex;
     justify-content:center;
     align-items:center;
+    color: red;
 `
 export const IconoAddList = styled.div`
     cursor:pointer;
