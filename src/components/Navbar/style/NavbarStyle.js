@@ -40,6 +40,8 @@ export const ContenedorPerfil = styled.div`
 
 export const ContenedorPerfilTexto = styled.span`
   display: flex;
+  font-weight:bold;
+  text-transform: uppercase;
   align-items: center;
   @media (max-width: 768px) {
     display: none;
