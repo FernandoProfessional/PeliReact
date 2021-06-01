@@ -35,7 +35,7 @@ const ContenidoPeli = styled.div`
     align-items: center;
     flex-direction: row;
 
-    @media (max-width: 1320px) {
+    @media (max-width: 1530px) {
         flex-direction: column;
         flex-wrap:wrap; 
     }
