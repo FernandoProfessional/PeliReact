@@ -50,7 +50,9 @@ export const NoPosterPeli = styled.div`
     display: flex;
     flex-direction:column;
     justify-content:center;
-
+   @media (max-width: 1320px) {
+        margin:20px;
+    }
 `
 export const  HeaderDescripcion = styled.div`
 /*     background-color:gray;
