@@ -30,10 +30,14 @@ const ContenidoPeli = styled.div`
     height:100%;
     width:80%;
     display: flex;
+    
     justify-content:center;
     align-items: center;
-    @media (max-width: 992px) {
+    flex-direction: row;
+
+    @media (max-width: 1320px) {
         flex-direction: column;
+        flex-wrap:wrap; 
     }
     
 `   
